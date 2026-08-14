@@ -12,3 +12,26 @@ Spring Framework是底层框架
 2. 定义HelloController类,添加方法 hello,并添加注解。
 ```
 ![[Pasted image 20260812172808.png]]
+勾选Spring Web
+![[Pasted image 20260813090124.png]]
+入门程序：
+```
+package cn.hytc.springbootweb;  
+  
+import org.springframework.web.bind.annotation.RequestMapping;  
+import org.springframework.web.bind.annotation.RestController;  
+  
+@RestController  
+public class HelloController {  
+    @RequestMapping("/hello")  
+    public String hello(String name) {  
+        return "hello " + name;  
+    }  
+}
+```
+![[Pasted image 20260813092228.png|624]]
+## Spring官方脚手架连接不上解决方案
+![[Pasted image 20260813092448.png]]
+## 为什么只需要运行启动类就可以启动web
+因为当初创建的时候勾选了springweb这个依赖，然后由于maven的依赖传递，引入了tomcat的依赖，这个是springweb的内嵌tomcat,tomcat就相当于一个web服务器，启动启动类就会运行tomcat
+所以使用springboot就可以不用配置tomcat，因为依赖里面内嵌了一个tomcat
